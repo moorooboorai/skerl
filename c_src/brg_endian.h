@@ -39,7 +39,8 @@
 #define IS_LITTLE_ENDIAN   1234 /* byte 0 is least significant (i386) */
 
 /* Include files where endian defines and byteswap functions may reside */
-#if defined( __FreeBSD__ ) || defined( __OpenBSD__ ) || defined( __NetBSD__ )
+#if defined( __FreeBSD__ ) || defined( __OpenBSD__ ) || defined( __NetBSD__ ) || \
+    defined( __DragonFly__ )
 #  include <sys/endian.h>
 #elif defined( BSD ) && ( BSD >= 199103 ) || defined( __APPLE__ ) || \
       defined( __CYGWIN32__ ) || defined( __DJGPP__ ) || defined( __osf__ )
@@ -119,7 +120,9 @@
       defined( __i386__ )  || defined( _M_I86 )  || defined( _M_IX86 )    || \
       defined( __OS2__ )   || defined( sun386 )  || defined( __TURBOC__ ) || \
       defined( vax )       || defined( vms )     || defined( VMS )        || \
-      defined( __VMS )     || defined( _M_X64 )  || defined( AVR )
+      defined( __VMS )     || defined( _M_X64 )  || defined( AVR )        || \
+      defined( __amd64__ ) || defined( __amd64 ) || defined( __x86_64__ ) || \
+      defined( __x86_64 )
 #  define PLATFORM_BYTE_ORDER IS_LITTLE_ENDIAN
 
 #elif defined( AMIGA )   || defined( applec )    || defined( __AS400__ )  || \
